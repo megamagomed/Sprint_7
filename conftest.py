@@ -1,6 +1,6 @@
 ﻿import pytest
 
-from helpers import (
+from api_methods import (
     delete_courier_by_id,
     login_courier_and_get_id,
     register_new_courier_and_return_login_password,

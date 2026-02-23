@@ -3,8 +3,9 @@ import requests
 import pytest
 
 from urls import LOGIN_COURIER_URL
-from helpers import generate_random_string, login_courier
-
+from helpers import generate_random_string
+from api_methods import login_courier
+from data import LOGIN_MISSING_REQUIRED_FIELD_ERROR, WRONG_LOGIN_ERROR
 
 @allure.feature("Courier API")
 @allure.story("Login courier")
@@ -35,7 +36,7 @@ class TestLoginCourier:
         with allure.step("Проверка кода ответа"):
             assert response.status_code == 400
         with allure.step("Проверка текста ошибки"):
-            assert response.json()["message"] == "Недостаточно данных для входа"
+            assert response.json()["message"] == LOGIN_MISSING_REQUIRED_FIELD_ERROR
 
     @allure.title(
         "Тест на невозможность авторизации с неправильным логином или паролем"
@@ -54,8 +55,7 @@ class TestLoginCourier:
         with allure.step("Проверка кода ответа"):
             assert response.status_code == 404
         with allure.step("Проверка текста ошибки"):
-            assert response.json()["message"] == "Учетная запись не найдена"
-
+            assert response.json()["message"] == WRONG_LOGIN_ERROR
    
     @allure.title("Тест на невозможность авторизации несуществующего курьера")
     def test_login_nonexistent_courier_fail(self):
@@ -70,4 +70,4 @@ class TestLoginCourier:
         with allure.step("Проверка кода ответа"):
             assert response.status_code == 404
         with allure.step("Проверка текста ошибки"):
-            assert response.json()["message"] == "Учетная запись не найдена"
+            assert response.json()["message"] == WRONG_LOGIN_ERROR

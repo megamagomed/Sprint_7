@@ -2,7 +2,7 @@
 import requests
 import pytest
 
-from helpers import login_courier_and_get_id
+from api_methods import login_courier_and_get_id
 from urls import GET_ORDERS_LIST_URL
 from data import ORDER_LIST_DATA, ORDER_LIST_IDS
 

@@ -16,3 +16,7 @@ ORDER_LIST_IDS = [
     "with_all_filters",
 ]
 
+SAME_LOGIN_ERROR = "Этот логин уже используется"
+CREATE_ACC_MISSING_REQUIRED_FIELD_ERROR = "Недостаточно данных для создания учетной записи"
+LOGIN_MISSING_REQUIRED_FIELD_ERROR = "Недостаточно данных для входа"
+WRONG_LOGIN_ERROR = "Учетная запись не найдена"

@@ -14,15 +14,10 @@ from data import SAME_LOGIN_ERROR, CREATE_ACC_MISSING_REQUIRED_FIELD_ERROR
 class TestCreateCourier:
 
     @allure.title("Тест на успешное создание курьера")
-    def test_create_courier_success(self):
-        payload = {
-            "login": generate_random_string(10),
-            "password": generate_random_string(10),
-            "firstName": generate_random_string(10),
-        }
+    def test_create_courier_success(self, courier_registration_data):
 
         with allure.step("Отправка запроса на создание курьера"):
-            response = requests.post(CREATE_COURIER_URL, data=payload)
+            response = requests.post(CREATE_COURIER_URL, data=courier_registration_data)
 
         with allure.step("Проверка кода ответа"):
             assert response.status_code == 201
@@ -30,8 +25,6 @@ class TestCreateCourier:
         with allure.step("Проверка тела ответа"):
             assert response.json() == {"ok": True}
 
-        courier_id = login_courier_and_get_id(payload)
-        delete_courier_by_id(courier_id)
 
     @allure.title("Тест на невозможность создания курьера с неуникальным login")
     def test_create_courier_with_non_unique_login_fail(self, new_courier):

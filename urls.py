@@ -1,0 +1,6 @@
+﻿MAIN_PAGE_URL = "https://qa-scooter.praktikum-services.ru/"
+CREATE_COURIER_URL = MAIN_PAGE_URL + "api/v1/courier"
+LOGIN_COURIER_URL = MAIN_PAGE_URL + "api/v1/courier/login"
+ORDER_PAGE_URL = MAIN_PAGE_URL + "order"
+CREATE_ORDER_URL = MAIN_PAGE_URL + "api/v1/orders"
+GET_ORDERS_LIST_URL = MAIN_PAGE_URL + "api/v1/orders"
